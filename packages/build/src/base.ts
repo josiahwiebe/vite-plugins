@@ -72,11 +72,14 @@ const buildPlugin = (options: BuildOptions): Plugin => {
       if (id === resolvedVirtualEntryId) {
         const staticPaths: string[] = options.staticPaths ?? []
         const direntPaths = []
+        // Separate try/catch blocks: if publicDir is missing, outDir must still be read
         try {
           const publicDirPaths = readdirSync(resolve(config.root, config.publicDir), {
             withFileTypes: true,
           })
           direntPaths.push(...publicDirPaths)
+        } catch {}
+        try {
           const buildOutDirPaths = readdirSync(resolve(config.root, config.build.outDir), {
             withFileTypes: true,
           })
@@ -123,7 +126,11 @@ const buildPlugin = (options: BuildOptions): Plugin => {
           minify: options?.minify ?? defaultOptions.minify,
           ssr: true,
           rollupOptions: {
-            external: [...builtinModules, /^node:/],
+            external: [
+              ...builtinModules,
+              /^node:/,
+              ...(options?.external ?? defaultOptions.external),
+            ],
             input: virtualEntryId,
             output: {
               entryFileNames: output,

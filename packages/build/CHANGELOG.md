@@ -1,5 +1,22 @@
 # @hono/vite-build
 
+## 1.10.1
+
+### Patch Changes
+
+- [#349](https://github.com/honojs/vite-plugins/pull/349) [`7680ba2f76618082b3be6f94da7ef61429f08567`](https://github.com/honojs/vite-plugins/commit/7680ba2f76618082b3be6f94da7ef61429f08567) Thanks [@Moshyfawn](https://github.com/Moshyfawn)! - Propagate user externals to rollupOptions.external and auto-externalize bare "bun" specifier in Bun adapter
+
+## 1.10.0
+
+### Minor Changes
+
+- [#339](https://github.com/honojs/vite-plugins/pull/339) [`6896d6d17809c8148c1b2ad067a7deeb4ecb6744`](https://github.com/honojs/vite-plugins/commit/6896d6d17809c8148c1b2ad067a7deeb4ecb6744) Thanks [@josiahwiebe](https://github.com/josiahwiebe)! - feat: allows configuring vercel helpers
+
+### Patch Changes
+
+- [#342](https://github.com/honojs/vite-plugins/pull/342) [`ce81be036106779d04fe690d7eb8baa85b47b03f`](https://github.com/honojs/vite-plugins/commit/ce81be036106779d04fe690d7eb8baa85b47b03f) Thanks [@meck93](https://github.com/meck93)! - Fix static path discovery when `publicDir` does not exist.
+  Split shared `try/catch` so a missing `publicDir` no longer prevents `outDir` from being read, which caused `serveStatic` middleware to not be injected.
+
 ## 1.9.3
 
 ### Patch Changes
